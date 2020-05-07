@@ -1,0 +1,32 @@
+# @name authentication
+POST https://api.transip.nl/v6/auth
+Signature: {{$dotenv SIGNATURE}}
+Content-Type: application/json
+
+< ./account-settings.json
+
+###
+
+# @name invoices
+
+GET https://api.transip.nl/v6/invoices
+Content-Type: application/json
+Authorization: Bearer {{authentication.response.body.token}}
+
+###
+
+# @name listAllDomains
+
+GET https://api.transip.nl/v6/domains
+Content-Type: application/json
+Authorization: Bearer {{authentication.response.body.token}}
+
+###
+
+# @name contacts
+
+GET https://api.transip.nl/v6/domains/{{listAllDomains.response.body.domains[0].name}}/contacts
+Content-Type: application/json
+Authorization: Bearer {{authentication.response.body.token}}
+
+###

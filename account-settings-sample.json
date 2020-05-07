@@ -1,0 +1,8 @@
+{
+    "login": "test-user",
+    "nonce": "98475920834",
+    "read_only": false,
+    "expiration_time": "30 minutes",
+    "label": "add description",
+    "global_key": true
+}

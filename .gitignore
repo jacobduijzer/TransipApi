@@ -1,0 +1,4 @@
+.vscode/
+account-settings.json
+private.key
+.env
