@@ -23,6 +23,45 @@ Authorization: Bearer {{authentication.response.body.token}}
 
 ###
 
+# @name getDnsRecords
+GET https://api.transip.nl/v6/domains/{{listAllDomains.response.body.domains[0].name}}/dns
+Content-Type: application/json
+Authorization: Bearer {{authentication.response.body.token}}
+
+###
+
+POST https://api.transip.nl/v6/domains/{{listAllDomains.response.body.domains[0].name}}/dns
+Content-Type: application/json
+Authorization: Bearer {{authentication.response.body.token}}
+
+{
+  "dnsEntry": {
+    "name": "somesubdomain",
+    "expire": 86400,
+    "type": "CNAME",
+    "content": "somesubdomain.somedomain.site"
+  }
+}
+
+###
+
+# @name deleteDnsRecord
+
+DELETE https://api.transip.nl/v6/domains/{{listAllDomains.response.body.domains[0].name}}/dns
+Content-Type: application/json
+Authorization: Bearer {{authentication.response.body.token}}
+
+{
+  "dnsEntry": {
+    "name": "somesubdomain",
+    "expire": 86400,
+    "type": "CNAME",
+    "content": "somesubdomain.somedomain.site"
+  }
+}
+
+# Contacts for the first domain from 'listAllDomains' result
+
 # @name contacts
 
 GET https://api.transip.nl/v6/domains/{{listAllDomains.response.body.domains[0].name}}/contacts
